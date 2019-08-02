@@ -3,7 +3,7 @@ import profile from './profile';
 
 import {combineReducers} from 'redux'
 const myReducer=combineReducers({
-    login:login,
+    login,
     profile
 });
 export default myReducer;

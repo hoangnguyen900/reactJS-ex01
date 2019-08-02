@@ -1,0 +1,19 @@
+.p-footer {
+    background: #56ccb0;
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    display: block;
+    box-shadow: 2px 1px 2px 0.5px rgb(117, 117, 117);
+    //bottom: 0;
+}
+
+.p-footer {
+    p {
+        color: #fafafa;
+        position: absolute;
+        transform: translateX(-50%) translateY(-50%);
+        top: 25px;
+        left: 80px;
+    }
+}

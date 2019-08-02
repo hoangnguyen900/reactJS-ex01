@@ -1,25 +1,34 @@
 import * as types from "../actions/actionTypes";
 
-var initialState = {
+let initialState = {
   email: "",
   password: "",
   checkLogin: false,
-  token: ""
+  token: "",
+  isLoading: false
 };
-var myReducer = (state = initialState, action) => {
+let myReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.LOGIN:
+    case types.LOGIN_SUCCESS:
       state.email = action.state.email;
       state.password = action.state.password;
       state.checkLogin = true;
-      state.token = action.state.token;
+      state.token = action.token;
       return {
         ...state
       };
-    case types.SIGNUP:
-        return {
-          ...state
-        };
+    case types.LOGIN_FAIL:
+      return {
+        ...state
+      };
+    case types.SIGN_UP_SUCCESS:
+      return {
+        ...state
+      };
+    case types.SIGN_UP_FAIL:
+      return {
+        ...state
+      };
     default:
       return state;
   }

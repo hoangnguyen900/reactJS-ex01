@@ -1,0 +1,36 @@
+.p-header {
+    background: #56ccb0;
+    height: 50px;
+    width: 100%;
+    position: relative;
+    display: block;
+    box-shadow: 2px 1px 2px 0.5px rgb(117, 117, 117);
+}
+
+.p-picture-background {
+    position: absolute;
+    width: 120px;
+    height: 30px;
+    top: 10px;
+    left: 20px;
+}
+
+.listItem {
+    margin-top: 50px;
+    display: none
+}
+
+.p-link {
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%);
+    transition: all 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    top: 25px;
+    right: 10px;
+    color: #fafafa;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.p-link:hover {
+    color: #d6d6d6;
+}

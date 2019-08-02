@@ -1,0 +1,118 @@
+body,
+html {
+    height: 100% !important;
+    margin: 0;
+}
+
+.title-background-hidden {
+    position: absolute;
+    left: 50%;
+    display: none;
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 1em;
+    z-index: 2;
+    color: #7e7d7d;
+    margin-top: 15%
+}
+
+.formField {
+    margin-top: 30px;
+}
+
+.formField {
+    label {
+        width: 100%;
+        color: #686868;
+    }
+}
+
+.formField {
+    input {
+        width: 90%;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        background-color: rgb(254, 255, 254);
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        padding: 12px 20px 12px 40px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+    }
+}
+
+.formField {
+    input:focus {
+        width: 100%;
+    }
+}
+
+.btn-login:hover {
+    background-color: #377c3a
+}
+
+.btn-login:active {
+    background-color: #347536;
+    box-shadow: 0 2px #666;
+    transform: translateY(1px);
+}
+
+.btn-login {
+    background: hsl(150, 35%, 47%);
+    padding: 5px 5px;
+    font-size: 15px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 3px #999;
+}
+
+.link {
+    margin-left: 20px;
+    color: rgb(80, 177, 93);
+    text-decoration: none;
+    transition: all 0.3s linear;
+}
+
+.link:hover {
+    color: #4b6d50;
+}
+
+
+/* media query */
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+@media only screen and (max-width: 1023px) {
+    .column {
+        width: 100%;
+    }
+    .title-background-hidden {
+        display: block;
+    }
+    .formField input {
+        width: 95%;
+    }
+}
+
+@media only screen and (min-height: 650px) and (max-height:1000px) and (max-width:768px) {
+    .title-background-hidden {
+        display: block;
+    }
+}
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+
+// @media only screen and (min-width: 769px) {
+//     .column {
+//         width: 50%;
+//     }
+// }

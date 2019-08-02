@@ -1,10 +1,19 @@
 import * as types from "./actionTypes";
+import * as URLs from "./URL";
+
 import axios from "axios";
 import Swal from "sweetalert2";
 
-export const login = state => {
+export const loginSuccess = (state,token) => {
   return {
-    type: types.LOGIN,
+    type: types.LOGIN_SUCCESS,
+    state,
+    token
+  };
+};
+export const loginFail = state => {
+  return {
+    type: types.LOGIN_FAIL,
     state
   };
 };
@@ -13,27 +22,42 @@ export const loginAPI = state => {
   return dispatch => {
     axios({
       method: "post",
-      url: "https://terralogic-training.firebaseapp.com/api/login",
+      url: URLs.LOGIN_API_URL,
       data: state
     })
       .then(res => {
-        localStorage.setItem("token", res.data.token);
-
         console.log(res);
-        dispatch(login(state));
+        dispatch(loginSuccess(state,res.data.token));
+        Swal.fire({
+          position: 'top',
+          type: 'success',
+          title: res.data.message,
+          showConfirmButton: false,
+          timer: 1500,
+          heightAuto: false
+
+        })
       })
       .catch(er => {
+        dispatch(loginFail(state));
         Swal.fire({
           type: "error",
           title: "Oops...",
-          text: "Something went wrong! Email or password must valid!!"
+          text: `Something went wrong! ${er}`,
+          heightAuto: false
         });
       });
   };
 };
-export const signUp = state => {
+export const signUpSuccess = state => {
   return {
-    type: types.SIGNUP,
+    type: types.SIGN_UP_SUCCESS,
+    state
+  };
+};
+export const signUpFail = state => {
+  return {
+    type: types.SIGN_UP_FAIL,
     state
   };
 };
@@ -41,26 +65,32 @@ export const signUpAPI = state => {
   return dispatch => {
     axios({
       method: "post",
-      url: "https://terralogic-training.firebaseapp.com/api/sign_up",
+      url: URLs.SIGN_UP_API_URL,
       data: state
     })
       .then(res => {
         console.log(res);
-        dispatch(signUp(state));
+        dispatch(signUpSuccess(state));
         Swal.fire({
           position: 'top',
           type: 'success',
-          title: 'Your work has been saved',
+          title: res.data.message,
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
+          heightAuto: false
+
         })
 
       })
       .catch(er => {
+        dispatch(signUpFail(state));
+
         Swal.fire({
           type: "error",
           title: "Oops...",
-          text: "Email is already exist!!"
+          text: er,
+          heightAuto: false
+
         });
       });
   };
@@ -71,12 +101,12 @@ export const showProfile = state => {
     state
   };
 };
-export const showProfileAPI = () => {
+export const showProfileAPI = (token) => {
   return dispatch => {
-    var token = localStorage.getItem("token");
+    
     axios({
       method: "post",
-      url: "https://terralogic-training.firebaseapp.com/api/get_profile",
+      url: URLs.SHOW_PROFILE_API_URL,
       headers: {
         "x-user-token": token
       }
@@ -94,12 +124,11 @@ export const updateProfile = state => {
     state
   };
 };
-export const updateProfileAPI = state => {
+export const updateProfileAPI = (state,token) => {
   return dispatch => {
-    var token = localStorage.getItem("token");
     axios({
       method: "post",
-      url: "https://terralogic-training.firebaseapp.com/api/set_profile",
+      url: URLs.UPDATE_PROFILE_API_URL,
       headers: {
         "x-user-token": token
       },
@@ -111,7 +140,7 @@ export const updateProfileAPI = state => {
         Swal.fire({
           position: 'top',
           type: 'success',
-          title: 'Your work has been saved',
+          title: res.data.message,
           showConfirmButton: false,
           timer: 1500
         })
@@ -123,5 +152,21 @@ export const updateProfileAPI = state => {
           text: "Something went wrong!!!"
         });
       });
+  };
+};
+export const userLogoutAPI = (token) => {
+  return dispatch => {
+    axios({
+      method: "post",
+      url: URLs.LOGOUT_API_URL,
+      headers: {
+        "x-user-token": token
+      }
+    })
+      .then(res => {
+        console.log('Logout',res)
+      })
+      .catch(er => {});
+     
   };
 };

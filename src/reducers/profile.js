@@ -1,11 +1,11 @@
 import * as types from "../actions/actionTypes";
-var initialState = {
+let initialState = {
   display_name: "",
   display_info: "",
   phone: "",
   avatar: []
 };
-var myReducer = (state = initialState, action) => {
+let myReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.SHOW_PROFILE:
       console.log("dataProfile: ", action.state);

@@ -1,10 +1,10 @@
 import React from "react";
-import LoginPage from "./components/pages/Login/LoginPage";
-import { Router, Switch, Route } from "react-router-dom";
+import LoginPage from "./pages/login/index";
+import ProfilePage from "./pages/profile/index";
+import { Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import history from './history';
 
-import ProfilePage from "./components/pages/profile/ProfilePage";
 class App extends React.Component {
   constructor(props) {
     super(props);
