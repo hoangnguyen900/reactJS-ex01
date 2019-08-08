@@ -45,7 +45,7 @@ class LoginFormRightLogin extends React.Component {
   }
   render() {
     let { email, password,isLoading } = this.state;
-    if (this.state.checkLogin) {
+    if (this.state.checkLogin||localStorage.getItem('token')) {
       // return <Redirect to="/profile" data={this.state}/>;
       history.push('/profile')
     }

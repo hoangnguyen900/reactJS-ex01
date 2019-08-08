@@ -45,7 +45,7 @@ class ProfileForm extends React.Component {
   };
 
   componentDidMount() {
-    let {token}=this.props.login
+    let token=localStorage.getItem('token')
     if (!token) history.push("/");
     else this.props.onShowProfile(token);
   }
@@ -120,7 +120,7 @@ class ProfileForm extends React.Component {
                   id="email"
                   name="email"
                   className="p-form-input"
-                  value={this.props.login.email}
+                  value={this.props.login.email?this.props.login.email:localStorage.getItem('email')}
                   onChange={this.onChange}
                   placeholder="Your email"
                 />

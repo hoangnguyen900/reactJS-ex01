@@ -10,6 +10,8 @@ class HeaderForm extends React.Component {
     this.state = {};
   }
   confirmLogout = () => {
+    localStorage.clear();
+
     this.props.onLogout(this.props.login.token);
   };
 
@@ -44,8 +46,8 @@ class HeaderForm extends React.Component {
 }
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    onLogout: () => {
-      dispatch(actions.userLogoutAPI());
+    onLogout: (token) => {
+      dispatch(actions.userLogoutAPI(token));
     }
   };
 };

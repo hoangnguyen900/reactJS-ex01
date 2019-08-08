@@ -27,6 +27,9 @@ export const loginAPI = state => {
     })
       .then(res => {
         console.log(res);
+        localStorage.setItem('token',res.data.token)
+        localStorage.setItem('email',state.email)
+
         dispatch(loginSuccess(state,res.data.token));
         Swal.fire({
           position: 'top',
